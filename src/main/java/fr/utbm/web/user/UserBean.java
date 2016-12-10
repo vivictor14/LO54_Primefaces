@@ -8,11 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
 import fr.utbm.service.UserService;
-import lombok.Getter;
-import lombok.Setter;
 
-@Setter
-@Getter
 @Component
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
 public class UserBean {

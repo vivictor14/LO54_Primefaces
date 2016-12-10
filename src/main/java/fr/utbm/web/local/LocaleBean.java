@@ -6,11 +6,7 @@ import java.util.*;
 import javax.faces.bean.*;
 import javax.faces.context.*;
 import javax.faces.event.*;
-import lombok.Getter;
-import lombok.Setter;
  
-@Setter
-@Getter
 @ManagedBean
 @SessionScoped
 public class LocaleBean implements Serializable {
