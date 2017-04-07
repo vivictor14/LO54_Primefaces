@@ -1,4 +1,4 @@
-package fr.utbm.web.user;
+package fr.utbm.lo54.primeProject.web.user;
 
 import javax.annotation.PostConstruct;
 
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
-import fr.utbm.service.UserService;
+import fr.utbm.lo54.primeProject.service.UserService;
 
 @Component
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)

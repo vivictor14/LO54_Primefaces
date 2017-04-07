@@ -1,4 +1,4 @@
-package fr.utbm.config;
+package fr.utbm.lo54.primeProject.config;
 
 import java.util.Arrays;
 

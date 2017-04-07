@@ -1,4 +1,4 @@
-package fr.utbm.web.user;
+package fr.utbm.lo54.primeProject.web.user;
 
 import java.util.List;
 import java.util.Map;
@@ -14,8 +14,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 
-import fr.utbm.entity.User;
-import fr.utbm.service.UserService;
+import fr.utbm.lo54.primeProject.entity.User;
+import fr.utbm.lo54.primeProject.service.UserService;
 
 public class UserLazyDataModel extends LazyDataModel<User> implements SelectableDataModel<User> {
 

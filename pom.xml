@@ -2,18 +2,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>fr.clemessy</groupId>
-    <artifactId>LO54Prime</artifactId>
+    <groupId>fr.utbm.lo54</groupId>
+    <artifactId>PrimeProject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     
-    <name>LO54Prime</name>
-    <description>LO54Prime</description>
+    <name>PrimeProject</name>
+    <description>LO54 project with PrimeFaces</description>
     
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.2.RELEASE</version>
-        <relativePath>/</relativePath>
+        <relativePath></relativePath>
     </parent>
 
     <properties>
@@ -89,6 +89,18 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.mysql.jdbc</groupId>-->
+            <!--<artifactId>Driver</artifactId>-->
+            <!--<version>LATEST</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
         </dependency>
         
         <!-- Data Exporter -->

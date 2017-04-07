@@ -1,4 +1,4 @@
-package fr.utbm.entity;
+package fr.utbm.lo54.primeProject.entity;
 
 import java.io.Serializable;
 import java.util.Date;

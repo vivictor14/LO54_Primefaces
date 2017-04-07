@@ -1,4 +1,4 @@
-package fr.utbm.service;
+package fr.utbm.lo54.primeProject.service;
 
 import java.util.Map;
 import java.util.Optional;
@@ -17,8 +17,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import fr.utbm.entity.User;
-import fr.utbm.repository.UserRepository;
+import fr.utbm.lo54.primeProject.entity.User;
+import fr.utbm.lo54.primeProject.repository.UserRepository;
 
 @Service
 public class UserService {

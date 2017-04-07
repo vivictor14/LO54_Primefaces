@@ -1,4 +1,4 @@
-package fr.utbm;
+package fr.utbm.lo54.primeProject;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -8,8 +8,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import fr.utbm.entity.User;
-import fr.utbm.service.UserService;
+import fr.utbm.lo54.primeProject.entity.User;
+import fr.utbm.lo54.primeProject.service.UserService;
 
 @SpringBootApplication
 public class Application {
