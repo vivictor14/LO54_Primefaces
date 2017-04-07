@@ -9,13 +9,13 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "course_session", schema = "lo54-project")
-public class CourseSessionEntity {
+public class CourseSession {
     private int id;
     private Date startDate;
     private Date endDate;
-    private Collection<ClientEntity> clientsById;
-    private CourseEntity courseByCourseCode;
-    private LocationEntity locationByLocationId;
+    private Collection<Client> clientsById;
+    private Course courseByCourseCode;
+    private Location locationByLocationId;
 
     @Id
     @Column(name = "id")
@@ -52,7 +52,7 @@ public class CourseSessionEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CourseSessionEntity that = (CourseSessionEntity) o;
+        CourseSession that = (CourseSession) o;
 
         if (id != that.id) return false;
         if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
@@ -70,31 +70,31 @@ public class CourseSessionEntity {
     }
 
     @OneToMany(mappedBy = "courseSessionByCourseSessionId")
-    public Collection<ClientEntity> getClientsById() {
+    public Collection<Client> getClientsById() {
         return clientsById;
     }
 
-    public void setClientsById(Collection<ClientEntity> clientsById) {
+    public void setClientsById(Collection<Client> clientsById) {
         this.clientsById = clientsById;
     }
 
     @ManyToOne
     @JoinColumn(name = "course_code", referencedColumnName = "code", nullable = false)
-    public CourseEntity getCourseByCourseCode() {
+    public Course getCourseByCourseCode() {
         return courseByCourseCode;
     }
 
-    public void setCourseByCourseCode(CourseEntity courseByCourseCode) {
+    public void setCourseByCourseCode(Course courseByCourseCode) {
         this.courseByCourseCode = courseByCourseCode;
     }
 
     @ManyToOne
     @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
-    public LocationEntity getLocationByLocationId() {
+    public Location getLocationByLocationId() {
         return locationByLocationId;
     }
 
-    public void setLocationByLocationId(LocationEntity locationByLocationId) {
+    public void setLocationByLocationId(Location locationByLocationId) {
         this.locationByLocationId = locationByLocationId;
     }
 }

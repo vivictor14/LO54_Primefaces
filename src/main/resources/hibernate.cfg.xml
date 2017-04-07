@@ -6,14 +6,16 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/lo54-project</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <mapping class="fr.utbm.lo54.primeProject.entity.ClientEntity"/>
-      <mapping class="fr.utbm.lo54.primeProject.entity.CourseEntity"/>
-      <mapping class="fr.utbm.lo54.primeProject.entity.CourseSessionEntity"/>
-      <mapping class="fr.utbm.lo54.primeProject.entity.LocationEntity"/>
+    <property name="hbm2ddl.auto">validate</property>
+
+    <mapping class="fr.utbm.lo54.primeProject.entity.Client"/>
+    <mapping class="fr.utbm.lo54.primeProject.entity.Course"/>
+    <mapping class="fr.utbm.lo54.primeProject.entity.CourseSession"/>
+    <mapping class="fr.utbm.lo54.primeProject.entity.Location"/>
       <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->
-    <!-- <property name="hbm2ddl.auto">update</property> -->
+
   </session-factory>
 </hibernate-configuration>

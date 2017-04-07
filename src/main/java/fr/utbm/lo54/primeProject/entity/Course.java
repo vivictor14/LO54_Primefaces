@@ -8,9 +8,9 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "course", schema = "lo54-project")
-public class CourseEntity {
+public class Course {
     private String code;
-    private Collection<CourseSessionEntity> courseSessionsByCode;
+    private Collection<CourseSession> courseSessionsByCode;
 
     @Id
     @Column(name = "code")
@@ -27,7 +27,7 @@ public class CourseEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CourseEntity that = (CourseEntity) o;
+        Course that = (Course) o;
 
         if (code != null ? !code.equals(that.code) : that.code != null) return false;
 
@@ -40,11 +40,11 @@ public class CourseEntity {
     }
 
     @OneToMany(mappedBy = "courseByCourseCode")
-    public Collection<CourseSessionEntity> getCourseSessionsByCode() {
+    public Collection<CourseSession> getCourseSessionsByCode() {
         return courseSessionsByCode;
     }
 
-    public void setCourseSessionsByCode(Collection<CourseSessionEntity> courseSessionsByCode) {
+    public void setCourseSessionsByCode(Collection<CourseSession> courseSessionsByCode) {
         this.courseSessionsByCode = courseSessionsByCode;
     }
 }

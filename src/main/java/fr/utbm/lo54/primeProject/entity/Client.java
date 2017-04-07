@@ -7,14 +7,14 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "client", schema = "lo54-project")
-public class ClientEntity {
+public class Client {
     private int id;
     private String lastname;
     private String firstname;
     private String address;
     private String phone;
     private String email;
-    private CourseSessionEntity courseSessionByCourseSessionId;
+    private CourseSession courseSessionByCourseSessionId;
 
     @Id
     @Column(name = "id")
@@ -81,7 +81,7 @@ public class ClientEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ClientEntity that = (ClientEntity) o;
+        Client that = (Client) o;
 
         if (id != that.id) return false;
         if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
@@ -106,11 +106,11 @@ public class ClientEntity {
 
     @ManyToOne
     @JoinColumn(name = "course_session_id", referencedColumnName = "id", nullable = false)
-    public CourseSessionEntity getCourseSessionByCourseSessionId() {
+    public CourseSession getCourseSessionByCourseSessionId() {
         return courseSessionByCourseSessionId;
     }
 
-    public void setCourseSessionByCourseSessionId(CourseSessionEntity courseSessionByCourseSessionId) {
+    public void setCourseSessionByCourseSessionId(CourseSession courseSessionByCourseSessionId) {
         this.courseSessionByCourseSessionId = courseSessionByCourseSessionId;
     }
 }

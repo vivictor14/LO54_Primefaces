@@ -8,10 +8,10 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "location", schema = "lo54-project")
-public class LocationEntity {
+public class Location {
     private String city;
     private int id;
-    private Collection<CourseSessionEntity> courseSessionsById;
+    private Collection<CourseSession> courseSessionsById;
 
     @Basic
     @Column(name = "city")
@@ -38,7 +38,7 @@ public class LocationEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        LocationEntity that = (LocationEntity) o;
+        Location that = (Location) o;
 
         if (id != that.id) return false;
         if (city != null ? !city.equals(that.city) : that.city != null) return false;
@@ -54,11 +54,11 @@ public class LocationEntity {
     }
 
     @OneToMany(mappedBy = "locationByLocationId")
-    public Collection<CourseSessionEntity> getCourseSessionsById() {
+    public Collection<CourseSession> getCourseSessionsById() {
         return courseSessionsById;
     }
 
-    public void setCourseSessionsById(Collection<CourseSessionEntity> courseSessionsById) {
+    public void setCourseSessionsById(Collection<CourseSession> courseSessionsById) {
         this.courseSessionsById = courseSessionsById;
     }
 }
