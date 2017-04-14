@@ -8,7 +8,7 @@ import java.util.Collection;
  * Created by Victor on 07/04/2017.
  */
 @Entity
-@Table(name = "course_session", schema = "lo54-project")
+@Table(name = "course_session")
 public class CourseSession {
     private int id;
     private Date startDate;

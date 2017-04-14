@@ -7,7 +7,7 @@ import java.util.Collection;
  * Created by Victor on 07/04/2017.
  */
 @Entity
-@Table(name = "course", schema = "lo54-project")
+@Table(name = "course")
 public class Course {
     private String code;
     private Collection<CourseSession> courseSessionsByCode;
