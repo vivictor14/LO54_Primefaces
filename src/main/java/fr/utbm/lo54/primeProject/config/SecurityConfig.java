@@ -30,14 +30,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
-                    .loginPage("/login.xhtml")
+                    .loginPage("/index.xhtml")
                     .permitAll()
-                    .failureUrl("/login.xhtml?error=true")
+                    .failureUrl("/index.xhtml?error=true")
                     .successForwardUrl("/")
                     .defaultSuccessUrl("/")
                     .and()
                     .logout()
-                    .logoutSuccessUrl("/login.xhtml");
+                    .logoutSuccessUrl("/index.xhtml");
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
