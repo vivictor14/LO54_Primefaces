@@ -4,10 +4,10 @@
     <!ENTITY copy "&#169;">
 ]>
 <html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:ui="http://java.sun.com/jsf/facelets"
-        xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:sec="http://www.springframework.org/security/tags">
 <h:head>
     <f:facet name="first">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -173,11 +173,11 @@
 
                 <h:form id="loginForm">
                     <h:outputText value="Identifiant : " />
-                    <p:inputText id="username" value="#{LoginBean.userName}" />
+                    <p:inputText class="loggingInput" id="username" value="#{LoginBean.userName}" />
                     <h:outputText value=" Mot de passe : " />
-                    <p:password id="password" value="#{LoginBean.password}" />
-                    <h:commandLink id="login" action="#{loginMgmtBean.login}" value="Login" />
-                    <h:commandLink id="logout" action="#{loginMgmtBean.logout}" value="Logout" />
+                    <p:password class="loggingInput" id="password" value="#{LoginBean.password}" />
+                    <sec:authorize access="!isAuthenticated()"><h:commandLink class="loggingButton" id="login" action="#{loginMgmtBean.login}" value="Login" /></sec:authorize>
+                    <sec:authorize access="isAuthenticated()"><h:commandLink class="loggingButton" id="logout" action="#{loginMgmtBean.logout}" value="Logout" /></sec:authorize>
                 </h:form>
                 
                 <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
