@@ -28,17 +28,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/images/**").permitAll()
                     .antMatchers("/resources/**").permitAll()
                     .antMatchers("/index.xhtml").permitAll()
-                    .anyRequest().authenticated();
-//                    .and()
-//                    .formLogin()
-//                    .loginPage("/login.xhtml")
-//                    .permitAll()
-//                    .failureUrl("/login.xhtml?error=true")
-//                    .successForwardUrl("/")
-//                    .defaultSuccessUrl("/")
-//                    .and()
-//                    .logout()
-//                    .logoutSuccessUrl("/login.xhtml");
+                    .anyRequest().authenticated()
+                    .and()
+                    .formLogin()
+                    .loginPage("/login.xhtml")
+                    .permitAll()
+                    .failureUrl("/login.xhtml?error=true")
+                    .successForwardUrl("/")
+                    .defaultSuccessUrl("/")
+                    .and()
+                    .logout()
+                    .logoutSuccessUrl("/login.xhtml");
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }

@@ -18,6 +18,7 @@
     </f:facet>
 
     <title>PrimeFaces ShowCase</title>
+    <h:outputStylesheet name="main/css/main.css" />
     <h:outputStylesheet name="main/css/showcase.css" />
     <h:outputStylesheet name="main/css/perfect-scrollbar.css" />
     <h:outputStylesheet name="main/css/sh.css" />
@@ -170,14 +171,14 @@
                     <span class="dispBlock logoBlueText fontSize28 regularFont">SHOWCASE</span>
                 </a>
 
-                <!--<h:form>-->
-                    <!--<h:panelGrid columns="2" cellpadding="5">-->
-                        <!--<h:outputText value="Basic: " />-->
-                        <!--<p:password id="nonFeedback" value="#{passwordView.password1}" />-->
-                    <!--</h:panelGrid>-->
-
-                    <!--<p:messages id="messages" showDetail="true" autoUpdate="true" />-->
-                <!--</h:form>-->
+                <h:form id="loginForm">
+                    <h:outputText value="Identifiant : " />
+                    <p:inputText id="username" value="#{LoginBean.userName}" />
+                    <h:outputText value="Mot de passe : " />
+                    <p:password id="password" value="#{LoginBean.password}" />
+                    <h:commandLink id="login" action="#{loginMgmtBean.login}" value="Login" />
+                    <h:commandLink id="logout" action="#{loginMgmtBean.logout}" value="Logout" />
+                </h:form>
                 
                 <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
                 <a href="http://www.primefaces.org/showcase-ext" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
