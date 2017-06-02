@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Formation - <span class="subitem">Formation name</span>
+    </ui:define>
+
+    <ui:define name="description">
+       Description de la formation
+    </ui:define>
+
+    <ui:define name="implementation">
+
+        <h:form>
+            <p:growl id="growl" />
+            <p:panel id="pnl" header="Inscription" style="margin-bottom:10px;">
+                <p:messages id="messages" />
+                <h:panelGrid columns="6" cellpadding="5">
+                    <h:outputLabel for="date" value="Date de la session: *" />
+                    <p:selectOneMenu id="date" value="#{blockUIView.date}" style="width:125px">
+                        <f:selectItem itemLabel="Février" itemValue="Février" />
+                        <f:selectItem itemLabel="Août" itemValue="Août" />
+                        <f:selectItem itemLabel="Jamais" itemValue="Jamais" />
+                    </p:selectOneMenu>
+                    <p:message for="date" />
+
+                    <h:outputLabel for="location" value="Lieu de la session: *" />
+                    <p:selectOneMenu id="location" value="#{blockUIView.location}" style="width:125px">
+                        <f:selectItem itemLabel="Belfort" itemValue="Belfort" />
+                        <f:selectItem itemLabel="Montbéliard" itemValue="Montbéliard" />
+                        <f:selectItem itemLabel="Sevenans" itemValue="Sevenans" />
+                    </p:selectOneMenu>
+                    <p:message for="location" />
+
+                    <h:outputLabel for="lastname" value="Nom: *" />
+                    <p:inputText id="lastname" value="#{blockUIView.lastname}" required="true" label="Lastname"/>
+                    <p:message for="lastname" />
+
+                    <h:outputLabel for="firstname" value="Prénom: *" />
+                    <p:inputText id="firstname" value="#{blockUIView.firstname}" required="true" label="Firstname">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="firstname" />
+
+                    <h:outputLabel for="address" value="Adresse: *" />
+                    <p:inputText id="address" value="#{blockUIView.address}" required="true" label="Address"/>
+                    <p:message for="address" />
+
+                    <h:outputLabel for="phone" value="Téléphone: *" />
+                    <p:inputMask id="phone" value="#{blockUIView.phone}" mask="99-99-99-99-99"/>
+                    <p:message for="phone" />
+
+                    <h:outputLabel for="email" value="Email: *" />
+                    <p:inputText id="email" value="#{blockUIView.email}" required="true" label="Email"/>
+                    <p:message for="email" />
+                </h:panelGrid>
+
+                <p:commandButton id="saveBtn" value="Save" icon="ui-icon-check" style="margin:0" actionListener="#{blockUIView.save}" update="growl"/>
+            </p:panel>
+
+            <p:blockUI block="pnl" trigger="saveBtn" />
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

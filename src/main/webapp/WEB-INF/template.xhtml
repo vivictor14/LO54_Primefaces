@@ -52,107 +52,42 @@
                 <h:graphicImage id="BlueLogo" styleClass="hiddenLogo" name="main/images/logoBlue.svg" />
             </span>
             <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="boldFont fontSize14 mustClose searchInput"/></div>
-            
-            <span id="SubMenu-Ajax" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/ajaxCore.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Ajax Core</span></span>
+
+            <span id="SubMenu-CompuScience" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Informatique</span></span>
             <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/basic.xhtml">&bull; Basic</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/event.xhtml">&bull; Event</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/listener.xhtml">&bull; Listener</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/counter.xhtml">&bull; Counter</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/process.xhtml">&bull; Process</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/validation.xhtml">&bull; Validation</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/dropdown.xhtml">&bull; Dropdown</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/partialSubmit.xhtml">&bull; PartialSubmit</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/selector.xhtml">&bull; Selector</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/search.xhtml">&bull; Search</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/poll.xhtml">&bull; Poll</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/fragment.xhtml">&bull; Fragment</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/status.xhtml">&bull; Status</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/ajax/remoteCommand.xhtml">&bull; RemoteCommand</a>                
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Java (Débutant)</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; C++ (Débutant)</a>
+            	<a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Unity/C# (Débutant)</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Java (Intermédiaire)</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; POO (Avancé)</a>
             </div>
-            
-            <span id="SubMenu-Input" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/input.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/inputBlue.svg" /><span class="MainLinkText">Input</span></span>
+            <span id="SubMenu-Energy" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Energie</span></span>
             <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/autoComplete.xhtml">&bull; AutoComplete</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/input/inputTextarea.xhtml">&bull; InputTextarea</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Energie renouvelable</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Stockage de l'energie</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Technologie des centrales</a>
             </div>
-            
-            <span id="SubMenu-Button" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/button.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/buttonBlue.svg" /><span class="MainLinkText">Button</span></span>
+            <span id="SubMenu-SystIndu" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Systèmes industriels</span></span>
             <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/button/button.xhtml">&bull; Button</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/button/commandButton.xhtml">&bull; CommandButton</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Conception de procédé</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Robotique industrielle</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Méthodes d'optimisation</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Logistique interne</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Logistique externe</a>
             </div>
-            
-            <span id="SubMenu-Data" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/data.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dataBlue.svg" /><span class="MainLinkText">Data</span></span>
+            <span id="SubMenu-Ergo" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Ergonomie et design</span></span>
             <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/carousel.xhtml">&bull; Carousel</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/data/dataGrid.xhtml">&bull; DataGrid</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Eco conception</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Réalité virtuelle</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Dimentionnement</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Biomécanique humaine</a>
             </div>
-            
-            <span id="SubMenu-Panel" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/panel.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/panelBlue.svg" /><span class="MainLinkText">Panel</span></span>
+            <span id="SubMenu-Meca" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Mécanique</span></span>
             <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/panel/accordionPanel.xhtml">&bull; Accordion</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/panel/dashboard.xhtml">&bull; Dashboard</a>
-            </div>
-            
-            <span id="SubMenu-Overlay" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/overlay.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/overlayBlue.svg" /><span class="MainLinkText">Overlay</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/confirmDialog.xhtml">&bull; ConfirmDialog</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/overlay/dialog/basic.xhtml">&bull; Dialog</a>
-            </div>
-            
-            <span id="SubMenu-Menu" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/menu.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/menuBlue.svg" /><span class="MainLinkText">Menu</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/breadcrumb.xhtml">&bull; Breadcrumb</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/menu/contextmenu/basic.xhtml">&bull; ContextMenu</a>
-            </div>
-            
-            <span id="SubMenu-Charts" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/charts.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/chartsBlue.svg" /><span class="MainLinkText">Charts</span></span>
-            <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/chart/area.xhtml">&bull; Area</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/chart/bar.xhtml">&bull; Bar</a>
-            </div>
-            
-            <span id="SubMenu-Message" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/message.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/messageBlue.svg" /><span class="MainLinkText">Messages</span></span>
-            <div class="SubMenuLinkContainer">
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/message/growl.xhtml">&bull; Growl</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/message/messages.xhtml">&bull; Messages</a>
-            </div>
-            
-            <span id="SubMenu-Multimedia" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/multimedia.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/multimediaBlue.svg" /><span class="MainLinkText">Multimedia</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/barcode.xhtml">&bull; Barcode</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/multimedia/compare.xhtml">&bull; Compare</a>
-            </div>
-            
-            <span id="SubMenu-File" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/file.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/fileBlue.svg" /><span class="MainLinkText">File</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/file/upload/basic.xhtml">&bull; Upload</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/file/download.xhtml">&bull; Download</a>
-            </div>
-            
-            <span id="SubMenu-DragDrop" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/dragdrop.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dragdropBlue.svg" /><span class="MainLinkText">DragDrop</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/dnd/draggable.xhtml">&bull; Draggable</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/dnd/dataGrid.xhtml">&bull; DataGrid</a>
-            </div>
-            
-            <span id="SubMenu-CSV" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/clientSideValidation.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/clientSideValidationBlue.svg" /><span class="MainLinkText">Client Side Validation</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/csv/basic.xhtml">&bull; Basic</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/csv/bean.xhtml">&bull; Bean</a>
-            </div>
-            
-            <span id="SubMenu-DF" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/dialogFramework.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/dialogFrameworkBlue.svg" /><span class="MainLinkText">Dialog Framework</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/df/basic.xhtml">&bull; Basic</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/df/data.xhtml">&bull; Data</a>
-            </div>
-            
-            <span id="SubMenu-Misc" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Misc</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/misc/responsive.xhtml">&bull; Responsive</a>
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/misc/blockUI.xhtml">&bull; BlockUI</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Systèmes mécatroniques</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Transfert de chaleur</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Capteur, métrologie</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Aérodynamique</a>
             </div>
         </div>
     </div>
@@ -207,81 +142,7 @@
                         <p:remoteCommand name="changeTheme" actionListener="#{guestPreferences.changeTheme}" />
                     </h:form>
                 </span>
-                
-                <div class="mobileLogoCover">
-                    <h:graphicImage name="main/images/logoBlue.svg" style="height:40px;" styleClass="floatLeft marginRight10"/>
-                    <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 boldFont">SHOWCASE</span></span> 
-                </div>
-                <select id="mobilemenu" class="selectmenu regularFont">
-                    <option value="">Menu</option>
-                    <option value="#{request.contextPath}/index.xhtml" class="LEVEL1">Home</option>
-                    <optgroup label="Ajax Framework" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/ajax/basic.xhtml">Basic</option>
-                        <option value="#{request.contextPath}/ui/ajax/event.xhtml">Event</option>
-                    </optgroup>
-                    <optgroup label="Input" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/input/autoComplete.xhtml">AutoComplete</option>
-                        <option value="#{request.contextPath}/ui/input/inputTextarea.xhtml">InputTextarea</option>
-                    </optgroup>
-                    <optgroup label="Button" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/button/button.xhtml">Button</option>
-                        <option value="#{request.contextPath}/ui/button/commandButton.xhtml">CommandButton</option>
-                    </optgroup>
-                    <optgroup label="Data" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/data/carousel.xhtml">Carousel</option>
-                        <option value="#{request.contextPath}/ui/data/dataexporter/basic.xhtml">DataExporter - Basic</option>
-                    </optgroup>
-                    <optgroup label="Panel" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/panel/accordionPanel.xhtml">Accordion</option>
-                        <option value="#{request.contextPath}/ui/panel/dashboard.xhtml">Dashboard</option>
-                    </optgroup>
-                    <optgroup label="Overlay" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/overlay/confirmDialog.xhtml">ConfirmDialog</option>
-                        <option value="#{request.contextPath}/ui/overlay/dialog/basic.xhtml">Dialog - Basic</option>
-                    </optgroup>
-                    <optgroup label="Menu" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/menu/breadcrumb.xhtml">Breadcrumb</option>
-                        <option value="#{request.contextPath}/ui/menu/contextmenu/basic.xhtml">ContextMenu - Basic</option>
-                    </optgroup>
-                    <optgroup label="Charts" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/chart/area.xhtml">Area</option>
-                        <option value="#{request.contextPath}/ui/chart/bar.xhtml">Bar</option>
-                    </optgroup>
-                    <optgroup label="Messages" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/message/growl.xhtml">Growl</option>
-                        <option value="#{request.contextPath}/ui/message/messages.xhtml">Messages</option>
-                    </optgroup>
-                    <optgroup label="Multimedia" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/multimedia/barcode.xhtml">Barcode</option>
-                        <option value="#{request.contextPath}/ui/multimedia/compare.xhtml">Compare</option>
-                    </optgroup>
-                    <optgroup label="File" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/file/upload/basic.xhtml">Upload - Basic</option>
-                        <option value="#{request.contextPath}/ui/file/upload/auto.xhtml">Upload - Auto</option>
-                    </optgroup>
-                    <optgroup label="DragDrop" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/dnd/draggable.xhtml">Draggable</option>
-                        <option value="#{request.contextPath}/ui/dnd/dataGrid.xhtml">DataGrid</option>
-                    </optgroup>
-                    <optgroup label="Client Side Validation" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/csv/basic.xhtml">Basic</option>
-                        <option value="#{request.contextPath}/ui/csv/bean.xhtml">Bean</option>
-                    </optgroup>
-                    <optgroup label="Dialog Framework" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/df/basic.xhtml">Basic</option>
-                        <option value="#{request.contextPath}/ui/df/data.xhtml">Data</option>
-                    </optgroup>
-                    <optgroup label="Misc" class="LEVEL1">
-                        <option value="#{request.contextPath}/ui/misc/responsive.xhtml">Responsive</option>
-                        <option value="#{request.contextPath}/ui/misc/blockUI.xhtml">BlockUI</option>
-                    </optgroup>
-                    <option value="#{request.contextPath}/mobile/index.xhtml" class="LEVEL1">PFMobile</option>
-                    <optgroup label="PFPush" class="LEVEL1">
-                        <option value="#{request.contextPath}/push/counter.xhtml">Counter</option>
-                        <option value="#{request.contextPath}/push/chat.xhtml">Chat</option>
-                    </optgroup>
-                    <option value="#{request.contextPath}/ui/misc/mockosx.xhtml" class="LEVEL1">PFMockOSX</option>
-                </select>
+
             </div>
             <!-- header bar end-->
 
