@@ -12,8 +12,8 @@
     <mapping class="fr.utbm.lo54.primeProject.entity.Course"/>
     <mapping class="fr.utbm.lo54.primeProject.entity.CourseSession"/>
     <mapping class="fr.utbm.lo54.primeProject.entity.Location"/>
-      <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
+    <property name="connection.username">root</property>
+    <<property name="connection.password">mysql</property>
 
     <!-- DB schema will be updated if needed -->
 

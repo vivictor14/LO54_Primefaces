@@ -5,9 +5,11 @@
 ]>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" xmlns:sec="http://www.springframework.org/security/tags">
+
 <h:head>
     <f:facet name="first">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -55,11 +57,14 @@
 
             <span id="SubMenu-CompuScience" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Informatique</span></span>
             <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Java (Débutant)</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; C++ (Débutant)</a>
+                <c:forEach var="item" items="#{coursesMgmtBean.getCourses}">
+                    <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; #{item}</a>
+                </c:forEach>
+
+                <!--<a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; C++ (Débutant)</a>
             	<a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Unity/C# (Débutant)</a>
                 <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Java (Intermédiaire)</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; POO (Avancé)</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; POO (Avancé)</a>-->
             </div>
             <span id="SubMenu-Energy" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Energie</span></span>
             <div class="SubMenuLinkContainer">
