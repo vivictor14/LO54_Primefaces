@@ -1,49 +1,46 @@
 package fr.utbm.lo54.primeProject.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 
-/**
- * Created by Victor on 07/04/2017.
- */
 @Entity
-@Table(name = "client")
 public class Client {
-    private int id;
-    private String lastname;
-    private String firstname;
+    private Integer id;
+    private String lastName;
+    private String firstName;
     private String address;
     private String phone;
     private String email;
-    private CourseSession courseSessionByCourseSessionId;
+    private Collection<CourseSession> courseSessions;
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     @Basic
     @Column(name = "lastname")
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Basic
     @Column(name = "firstname")
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     @Basic
@@ -81,36 +78,36 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Client that = (Client) o;
+        Client client = (Client) o;
 
-        if (id != that.id) return false;
-        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
-        if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-        if (address != null ? !address.equals(that.address) : that.address != null) return false;
-        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (id != null ? !id.equals(client.id) : client.id != null) return false;
+        if (lastName != null ? !lastName.equals(client.lastName) : client.lastName != null) return false;
+        if (firstName != null ? !firstName.equals(client.firstName) : client.firstName != null) return false;
+        if (address != null ? !address.equals(client.address) : client.address != null) return false;
+        if (phone != null ? !phone.equals(client.phone) : client.phone != null) return false;
+        if (email != null ? !email.equals(client.email) : client.email != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "course_session_id", referencedColumnName = "id", nullable = false)
-    public CourseSession getCourseSessionByCourseSessionId() {
-        return courseSessionByCourseSessionId;
+    @ManyToMany
+    @JoinTable(name = "client_course_session", joinColumns = @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "course_session_id", referencedColumnName = "id", nullable = false))
+    public Collection<CourseSession> getCourseSessions() {
+        return courseSessions;
     }
 
-    public void setCourseSessionByCourseSessionId(CourseSession courseSessionByCourseSessionId) {
-        this.courseSessionByCourseSessionId = courseSessionByCourseSessionId;
+    public void setCourseSessions(Collection<CourseSession> courseSessions) {
+        this.courseSessions = courseSessions;
     }
 }

@@ -13,16 +13,16 @@ import fr.utbm.lo54.primeProject.service.UserService;
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
 public class UserBean {
 	
-	@Autowired
-	private UserService userService;
-	private UserLazyDataModel users;
-	
-	@PostConstruct
-	private void init() {
-		this.users = new UserLazyDataModel(userService);
-	}
-
-	public UserLazyDataModel getUsers() {
-		return users;
-	}
+//	@Autowired
+//	private UserService userService;
+//	private UserLazyDataModel users;
+//
+//	@PostConstruct
+//	private void init() {
+//		this.users = new UserLazyDataModel(userService);
+//	}
+//
+//	public UserLazyDataModel getUsers() {
+//		return users;
+//	}
 }

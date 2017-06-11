@@ -1,16 +1,15 @@
 package fr.utbm.lo54.primeProject.entity;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
 
-/**
- * Created by Victor on 07/04/2017.
- */
 @Entity
-@Table(name = "course")
-public class Course {
+@Table(name="course")
+public class Course implements Serializable {
     private String code;
-    private Collection<CourseSession> courseSessionsByCode;
 
     @Id
     @Column(name = "code")
@@ -27,9 +26,9 @@ public class Course {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Course that = (Course) o;
+        Course course = (Course) o;
 
-        if (code != null ? !code.equals(that.code) : that.code != null) return false;
+        if (code != null ? !code.equals(course.code) : course.code != null) return false;
 
         return true;
     }
@@ -37,14 +36,5 @@ public class Course {
     @Override
     public int hashCode() {
         return code != null ? code.hashCode() : 0;
-    }
-
-    @OneToMany(mappedBy = "courseByCourseCode")
-    public Collection<CourseSession> getCourseSessionsByCode() {
-        return courseSessionsByCode;
-    }
-
-    public void setCourseSessionsByCode(Collection<CourseSession> courseSessionsByCode) {
-        this.courseSessionsByCode = courseSessionsByCode;
     }
 }

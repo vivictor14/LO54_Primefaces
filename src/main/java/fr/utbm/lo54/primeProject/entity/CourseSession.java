@@ -4,26 +4,23 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
 
-/**
- * Created by Victor on 07/04/2017.
- */
 @Entity
 @Table(name = "course_session")
 public class CourseSession {
-    private int id;
+    private Integer id;
     private Date startDate;
     private Date endDate;
-    private Collection<Client> clientsById;
-    private Course courseByCourseCode;
-    private Location locationByLocationId;
+    private Course course;
+    private Location location;
+    private Collection<Client> clients;
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -54,7 +51,7 @@ public class CourseSession {
 
         CourseSession that = (CourseSession) o;
 
-        if (id != that.id) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
         if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
 
@@ -63,38 +60,38 @@ public class CourseSession {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
         result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
         return result;
     }
 
-    @OneToMany(mappedBy = "courseSessionByCourseSessionId")
-    public Collection<Client> getClientsById() {
-        return clientsById;
-    }
-
-    public void setClientsById(Collection<Client> clientsById) {
-        this.clientsById = clientsById;
-    }
-
     @ManyToOne
     @JoinColumn(name = "course_code", referencedColumnName = "code", nullable = false)
-    public Course getCourseByCourseCode() {
-        return courseByCourseCode;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourseByCourseCode(Course courseByCourseCode) {
-        this.courseByCourseCode = courseByCourseCode;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @ManyToOne
     @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
-    public Location getLocationByLocationId() {
-        return locationByLocationId;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLocationByLocationId(Location locationByLocationId) {
-        this.locationByLocationId = locationByLocationId;
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    @ManyToMany(mappedBy = "courseSessions")
+    public Collection<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Collection<Client> clients) {
+        this.clients = clients;
     }
 }

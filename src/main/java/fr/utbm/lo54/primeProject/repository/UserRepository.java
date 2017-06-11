@@ -1,13 +1,25 @@
 package fr.utbm.lo54.primeProject.repository;
 
+import fr.utbm.lo54.primeProject.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import fr.utbm.lo54.primeProject.entity.User;
+import java.util.Optional;
 
-public interface UserRepository extends PagingAndSortingRepository<User, Long>, JpaSpecificationExecutor<User> {
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-    public Page<User> findByLogin(String login, Pageable pageable);
+
+    Optional<User> findOneByUsername(String username);
+
+    @EntityGraph(attributePaths = "authorities")
+    User findOneWithAuthoritiesById(int id);
+
+    @EntityGraph(attributePaths = "authorities")
+    Optional<User> findOneWithAuthoritiesByUsername(String username);
+
+    Page<User> findAllByUsernameNot(Pageable pageable, String username);
 }

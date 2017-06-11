@@ -1,21 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-    "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="connection.url">jdbc:mysql://localhost:3306/lo54database</property>
-    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hbm2ddl.auto">validate</property>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/lo54database</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hbm2ddl.auto">validate</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">lo54</property>
 
-    <mapping class="fr.utbm.lo54.primeProject.entity.Client"/>
-    <mapping class="fr.utbm.lo54.primeProject.entity.Course"/>
-    <mapping class="fr.utbm.lo54.primeProject.entity.CourseSession"/>
-    <mapping class="fr.utbm.lo54.primeProject.entity.Location"/>
-    <property name="connection.username">root</property>
-    <<property name="connection.password">mysql</property>
+        <mapping class="fr.utbm.lo54.primeProject.entity.Client"/>
+        <mapping class="fr.utbm.lo54.primeProject.entity.Course"/>
+        <mapping class="fr.utbm.lo54.primeProject.entity.CourseSession"/>
+        <mapping class="fr.utbm.lo54.primeProject.entity.Location"/>
+        <mapping class="fr.utbm.lo54.primeProject.entity.User"/>
+        <mapping class="fr.utbm.lo54.primeProject.entity.Authority"/>
 
-    <!-- DB schema will be updated if needed -->
+        <!-- DB schema will be updated if needed -->
 
-  </session-factory>
+    </session-factory>
 </hibernate-configuration>

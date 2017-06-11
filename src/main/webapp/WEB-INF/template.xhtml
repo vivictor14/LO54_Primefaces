@@ -114,17 +114,34 @@
                 <h:form id="loginForm">
                     <sec:authorize access="!isAuthenticated()">
                         <h:outputText value="Identifiant : " />
-                        <p:inputText class="loggingInput" id="username" value="#{LoginBean.userName}" />
+                        <p:inputText class="loggingInput" id="username" value="#{loginMgmtBean.userName}" />
                         <h:outputText value=" Mot de passe : " />
-                        <p:password class="loggingInput" id="password" value="#{LoginBean.password}" />
-                        <h:commandLink class="loggingButton" id="login" action="#{loginMgmtBean.login}" value="Login" />
+                        <p:password class="loggingInput" id="password" value="#{loginMgmtBean.password}" />
+                        <p:commandButton class="loggingButton" id="login" action="#{loginMgmtBean.login}" value="Login" />
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
                         <h:outputText value="Connecté en tant que : "/>
-                        <!--<sec:authentication property="principal.username" />-->
+                        <!--<sec:authentication property="princiusernamename" />-->
                         <h:commandLink class="loggingButton" id="logout" action="#{loginMgmtBean.logout}" value="Logout" />
                     </sec:authorize>
                 </h:form>
+
+                <!--<h:form>-->
+                    <!--<h:panelGrid columns="2" cellpadding="5">-->
+                        <!--<h:outputText value="Basic: " />-->
+                        <!--<p:password id="nonFeedback" value="#{loginMgmtBean.password}" />-->
+                    <!--</h:panelGrid>-->
+
+                    <!--<p:spacer height="10" />-->
+
+                    <!--<p:separator />-->
+
+                    <!--<p:messages id="messages" showDetail="true" autoUpdate="true" />-->
+
+                    <!--<h:outputLabel value="#{loginMgmtBean.password}" id="matchGrid" />-->
+
+                    <!--<p:commandButton update="matchGrid" value="Save" />-->
+                <!--</h:form>-->
                 
                 <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
                 <a href="http://www.primefaces.org/showcase-ext" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>

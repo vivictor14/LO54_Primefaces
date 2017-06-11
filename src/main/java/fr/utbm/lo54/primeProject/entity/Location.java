@@ -1,17 +1,17 @@
 package fr.utbm.lo54.primeProject.entity;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Created by Victor on 07/04/2017.
+ * Created by Victor on 11/06/2017.
  */
 @Entity
-@Table(name = "location")
 public class Location {
     private String city;
-    private int id;
-    private Collection<CourseSession> courseSessionsById;
+    private Integer id;
 
     @Basic
     @Column(name = "city")
@@ -25,11 +25,11 @@ public class Location {
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,10 +38,10 @@ public class Location {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Location that = (Location) o;
+        Location location = (Location) o;
 
-        if (id != that.id) return false;
-        if (city != null ? !city.equals(that.city) : that.city != null) return false;
+        if (city != null ? !city.equals(location.city) : location.city != null) return false;
+        if (id != null ? !id.equals(location.id) : location.id != null) return false;
 
         return true;
     }
@@ -49,16 +49,7 @@ public class Location {
     @Override
     public int hashCode() {
         int result = city != null ? city.hashCode() : 0;
-        result = 31 * result + id;
+        result = 31 * result + (id != null ? id.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "locationByLocationId")
-    public Collection<CourseSession> getCourseSessionsById() {
-        return courseSessionsById;
-    }
-
-    public void setCourseSessionsById(Collection<CourseSession> courseSessionsById) {
-        this.courseSessionsById = courseSessionsById;
     }
 }
