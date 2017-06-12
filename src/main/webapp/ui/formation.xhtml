@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
                 template="/WEB-INF/template.xhtml">
 
-    <ui:param name="session" value="#{coursesMgmtBean.getSession(param['sessionId'])}" />
+    <ui:param name="session" value="#{coursesManagementBean.getSession(param['sessionId'])}" />
 
     <ui:define name="title">
         Formation - <span class="subitem">#{session.course.code}</span>
@@ -33,29 +33,30 @@
                 <p:messages id="messages" />
                 <h:panelGrid columns="6" cellpadding="5">
                     <h:outputLabel for="lastname" value="Nom: *" />
-                    <p:inputText id="lastname" value="#{blockUIView.lastname}" required="true" label="Lastname"/>
+                    <p:inputText id="lastname" value="#{clientManagementBean.lastName}" required="true" label="Lastname"/>
                     <p:message for="lastname" />
 
                     <h:outputLabel for="firstname" value="Prénom: *" />
-                    <p:inputText id="firstname" value="#{blockUIView.firstname}" required="true" label="Firstname">
+                    <p:inputText id="firstname" value="#{clientManagementBean.firstName}" required="true" label="Firstname">
                         <f:validateLength minimum="2" />
                     </p:inputText>
                     <p:message for="firstname" />
 
                     <h:outputLabel for="address" value="Adresse: *" />
-                    <p:inputText id="address" value="#{blockUIView.address}" required="true" label="Address"/>
+                    <p:inputText id="address" value="#{clientManagementBean.address}" required="true" label="Address"/>
                     <p:message for="address" />
 
                     <h:outputLabel for="phone" value="Téléphone: *" />
-                    <p:inputMask id="phone" value="#{blockUIView.phone}" mask="99-99-99-99-99"/>
+                    <p:inputMask id="phone" value="#{clientManagementBean.phone}" mask="99-99-99-99-99"/>
                     <p:message for="phone" />
 
                     <h:outputLabel for="email" value="Email: *" />
-                    <p:inputText id="email" value="#{blockUIView.email}" required="true" label="Email"/>
+                    <p:inputText id="email" value="#{clientManagementBean.email}" required="true" label="Email"/>
                     <p:message for="email" />
                 </h:panelGrid>
-
-                <p:commandButton id="saveBtn" value="Save" icon="ui-icon-check" style="margin:0" actionListener="#{blockUIView.save}" update="growl"/>
+                <p:commandButton id="saveBtn" value="S'inscrire" icon="ui-icon-check" style="margin:0" action="#{clientManagementBean.enroll}" update="growl">
+                    <f:param name="sessionId" value="#{param['sessionId']}" />
+                </p:commandButton>
             </p:panel>
 
             <p:blockUI block="pnl" trigger="saveBtn" />

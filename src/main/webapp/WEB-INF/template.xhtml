@@ -55,7 +55,7 @@
             </span>
             <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="boldFont fontSize14 mustClose searchInput"/></div>
 
-            <c:forEach var="course" items="#{coursesMgmtBean.courses}">
+            <c:forEach var="course" items="#{coursesManagementBean.courses}">
                 <span id="SubMenu-#{course.code}" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">#{course.code}</span></span>
                 <div class="SubMenuLinkContainer">
                     <c:forEach var="session" items="#{course.courseSessions}">
@@ -96,14 +96,15 @@
                 <h:form id="loginForm">
                     <sec:authorize access="!isAuthenticated()">
                         <h:outputText value="Identifiant : " />
-                        <p:inputText class="loggingInput" id="username" value="#{loginMgmtBean.userName}" />
+                        <p:inputText class="loggingInput" id="username" value="#{loginManagementBean.userName}" />
                         <h:outputText value=" Mot de passe : " />
-                        <p:password class="loggingInput" id="password" value="#{loginMgmtBean.password}" />
-                        <p:commandButton class="loggingButton" id="login" action="#{loginMgmtBean.login}" value="Login" update="@form" />
+                        <p:password class="loggingInput" id="password" value="#{loginManagementBean.password}" />
+                        <p:commandButton class="loggingButton" id="login" action="#{loginManagementBean.login}" value="Connection" update="@form" />
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
-                        <h:outputText value="Connecté en tant que : #{request.userPrincipal.name}"/>
-                        <h:commandLink class="loggingButton" id="logout" action="#{loginMgmtBean.logout}" value="Logout" update="@form" />
+                        <h:outputText value="Connecté en tant que : "/>
+                        <h:outputText value="#{request.userPrincipal.name}" style="font-weight:bold"/>
+                        <h:commandLink class="loggingButton" id="logout" action="#{loginManagementBean.logout}" value="Déconnection" update="@form" />
                     </sec:authorize>
                 </h:form>
 

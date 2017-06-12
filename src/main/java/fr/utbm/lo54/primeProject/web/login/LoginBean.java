@@ -1,5 +1,6 @@
 package fr.utbm.lo54.primeProject.web.login;
 
+import fr.utbm.lo54.primeProject.web.database.ClientBean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,7 +14,7 @@ import javax.faces.bean.RequestScoped;
 /**
  * The Class LoginBean.
  */
-@ManagedBean(name="loginMgmtBean")
+@ManagedBean(name="loginManagementBean")
 @RequestScoped
 public class LoginBean {
      
@@ -25,6 +26,10 @@ public class LoginBean {
  
     @ManagedProperty(value="#{authenticationManager}")
     private AuthenticationManager authenticationManager = null;
+
+    @ManagedProperty(value="#{clientManagementBean}")
+    private ClientBean clientBean = null;
+
     /**
      * Login.
      * 
@@ -35,6 +40,7 @@ public class LoginBean {
             Authentication request = new UsernamePasswordAuthenticationToken(this.getUserName(), this.getPassword());
             Authentication result = authenticationManager.authenticate(request);
             SecurityContextHolder.getContext().setAuthentication(result);
+            clientBean.setClient(userName);
         } catch (AuthenticationException e) {
             e.printStackTrace();
         }
@@ -47,6 +53,7 @@ public class LoginBean {
      
     public String logout(){
         SecurityContextHolder.clearContext();
+        clientBean.clear();
         return "index?faces-redirect=true";
     }
  
@@ -57,7 +64,15 @@ public class LoginBean {
     public void setAuthenticationManager(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
- 
+
+    public ClientBean getClientBean() {
+        return clientBean;
+    }
+
+    public void setClientBean(ClientBean clientBean) {
+        this.clientBean = clientBean;
+    }
+
     /**
      * Gets the user name.
      *

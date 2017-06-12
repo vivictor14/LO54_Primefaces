@@ -15,47 +15,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import fr.utbm.lo54.primeProject.entity.User;
 import fr.utbm.lo54.primeProject.repository.UserRepository;
 
-@Service
+@Component("userService")
 public class UserService {
 
-//	@Autowired
-//	private UserRepository userRepository;
-//
-//	public Page<User> findByFilter(Map<String, String> filters, Pageable pageable) {
-//		return userRepository.findAll(getFilterSpecification(filters), pageable);
-//	}
-//
-//	@Transactional
-//	public void create(User user) {
-//		userRepository.save(user);
-//	}
-//
-//	private Specification<User> getFilterSpecification(Map<String, String> filterValues) {
-//		return (Root<User> root, CriteriaQuery<?> query, CriteriaBuilder builder) -> {
-//			Optional<Predicate> predicate = filterValues.entrySet().stream()
-//					.filter(v -> v.getValue() != null && v.getValue().length() > 0)
-//					.map(entry -> {
-//						Path<?> path = root;
-//						String key = entry.getKey();
-//						if (entry.getKey().contains(".")) {
-//							String[] splitKey = entry.getKey().split("\\.");
-//							path = root.join(splitKey[0]);
-//							key = splitKey[1];
-//						}
-//						return builder.like(path.get(key).as(String.class), "%" + entry.getValue() + "%");
-//					})
-//					.collect(Collectors.reducing((a, b) -> builder.and(a, b)));
-//			return predicate.orElseGet(() -> alwaysTrue(builder));
-//		};
-//	}
-//
-//	private Predicate alwaysTrue(CriteriaBuilder builder) {
-//		return builder.isTrue(builder.literal(true));
-//	}
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public User findUserByUsername(String username) {
+
+        Optional<User> user = userRepository.findOneByUsername(username);
+        if(user.isPresent()) {
+            return user.get();
+        }
+        else {
+            throw new UsernameNotFoundException("User " + username + " was not found in the database");
+        }
+
+    }
 
 }

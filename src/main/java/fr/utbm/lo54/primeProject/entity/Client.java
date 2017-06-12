@@ -101,7 +101,7 @@ public class Client {
         return result;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "client_course_session", joinColumns = @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "course_session_id", referencedColumnName = "id", nullable = false))
     public Collection<CourseSession> getCourseSessions() {
         return courseSessions;
@@ -109,5 +109,9 @@ public class Client {
 
     public void setCourseSessions(Collection<CourseSession> courseSessions) {
         this.courseSessions = courseSessions;
+    }
+
+    public void addCourseSession(CourseSession courseSession) {
+        this.courseSessions.add(courseSession);
     }
 }
