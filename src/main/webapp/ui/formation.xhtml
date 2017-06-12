@@ -2,15 +2,27 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui"
+                xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
                 template="/WEB-INF/template.xhtml">
 
+    <ui:param name="session" value="#{coursesMgmtBean.getSession(param['sessionId'])}" />
+
     <ui:define name="title">
-        Formation - <span class="subitem">Formation name</span>
+        Formation - <span class="subitem">#{session.course.code}</span>
     </ui:define>
 
     <ui:define name="description">
-       Description de la formation
+        <span style="white-space: nowrap;">
+            Session du
+            <h:outputText value="#{session.startDate}" >
+                <f:convertDateTime pattern="dd.MM.yyyy" />
+            </h:outputText>
+            au
+            <h:outputText value="#{session.endDate}" >
+                <f:convertDateTime pattern="dd.MM.yyyy" />
+            </h:outputText>
+            à #{session.location.city}
+        </span>
     </ui:define>
 
     <ui:define name="implementation">
@@ -20,22 +32,6 @@
             <p:panel id="pnl" header="Inscription" style="margin-bottom:10px;">
                 <p:messages id="messages" />
                 <h:panelGrid columns="6" cellpadding="5">
-                    <h:outputLabel for="date" value="Date de la session: *" />
-                    <p:selectOneMenu id="date" value="#{blockUIView.date}" style="width:125px">
-                        <f:selectItem itemLabel="Février" itemValue="Février" />
-                        <f:selectItem itemLabel="Août" itemValue="Août" />
-                        <f:selectItem itemLabel="Jamais" itemValue="Jamais" />
-                    </p:selectOneMenu>
-                    <p:message for="date" />
-
-                    <h:outputLabel for="location" value="Lieu de la session: *" />
-                    <p:selectOneMenu id="location" value="#{blockUIView.location}" style="width:125px">
-                        <f:selectItem itemLabel="Belfort" itemValue="Belfort" />
-                        <f:selectItem itemLabel="Montbéliard" itemValue="Montbéliard" />
-                        <f:selectItem itemLabel="Sevenans" itemValue="Sevenans" />
-                    </p:selectOneMenu>
-                    <p:message for="location" />
-
                     <h:outputLabel for="lastname" value="Nom: *" />
                     <p:inputText id="lastname" value="#{blockUIView.lastname}" required="true" label="Lastname"/>
                     <p:message for="lastname" />

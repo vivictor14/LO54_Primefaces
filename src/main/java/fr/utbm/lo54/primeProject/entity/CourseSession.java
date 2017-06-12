@@ -66,7 +66,7 @@ public class CourseSession {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_code", referencedColumnName = "code", nullable = false)
     public Course getCourse() {
         return course;
@@ -76,7 +76,7 @@ public class CourseSession {
         this.course = course;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
     public Location getLocation() {
         return location;

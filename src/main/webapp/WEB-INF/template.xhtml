@@ -55,45 +55,27 @@
             </span>
             <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="boldFont fontSize14 mustClose searchInput"/></div>
 
-            <span id="SubMenu-CompuScience" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Informatique</span></span>
-            <div class="SubMenuLinkContainer">
-                <c:forEach var="item" items="#{coursesMgmtBean.getCourses}">
-                    <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; #{item}</a>
-                </c:forEach>
+            <c:forEach var="course" items="#{coursesMgmtBean.courses}">
+                <span id="SubMenu-#{course.code}" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">#{course.code}</span></span>
+                <div class="SubMenuLinkContainer">
+                    <c:forEach var="session" items="#{course.courseSessions}">
+                        <a class="SubMenuLink" style="width:70%;" href="#{request.contextPath}/ui/formation.xhtml?sessionId=#{session.id}">
+                            <span style="white-space: nowrap;">
+                                &bull; #{session.location.city}
+                                <br/>
+                                <h:outputText value="#{session.startDate}" >
+                                    <f:convertDateTime pattern="dd.MM.yyyy" />
+                                </h:outputText>
+                                  -
+                                <h:outputText value="#{session.endDate}" >
+                                    <f:convertDateTime pattern="dd.MM.yyyy" />
+                                </h:outputText>
+                            </span>
+                        </a>
+                    </c:forEach>
+                </div>
+            </c:forEach>
 
-                <!--<a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; C++ (Débutant)</a>
-            	<a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Unity/C# (Débutant)</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Java (Intermédiaire)</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; POO (Avancé)</a>-->
-            </div>
-            <span id="SubMenu-Energy" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Energie</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Energie renouvelable</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Stockage de l'energie</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Technologie des centrales</a>
-            </div>
-            <span id="SubMenu-SystIndu" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Systèmes industriels</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Conception de procédé</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Robotique industrielle</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Méthodes d'optimisation</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Logistique interne</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Logistique externe</a>
-            </div>
-            <span id="SubMenu-Ergo" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Ergonomie et design</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Eco conception</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Réalité virtuelle</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Dimentionnement</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Biomécanique humaine</a>
-            </div>
-            <span id="SubMenu-Meca" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">Mécanique</span></span>
-            <div class="SubMenuLinkContainer">
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Systèmes mécatroniques</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Transfert de chaleur</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Capteur, métrologie</a>
-                <a class="SubMenuLink" href="#{request.contextPath}/ui/formation.xhtml">&bull; Aérodynamique</a>
-            </div>
         </div>
     </div>
         
@@ -117,12 +99,11 @@
                         <p:inputText class="loggingInput" id="username" value="#{loginMgmtBean.userName}" />
                         <h:outputText value=" Mot de passe : " />
                         <p:password class="loggingInput" id="password" value="#{loginMgmtBean.password}" />
-                        <p:commandButton class="loggingButton" id="login" action="#{loginMgmtBean.login}" value="Login" />
+                        <p:commandButton class="loggingButton" id="login" action="#{loginMgmtBean.login}" value="Login" update="@form" />
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
-                        <h:outputText value="Connecté en tant que : "/>
-                        <!--<sec:authentication property="princiusernamename" />-->
-                        <h:commandLink class="loggingButton" id="logout" action="#{loginMgmtBean.logout}" value="Logout" />
+                        <h:outputText value="Connecté en tant que : #{request.userPrincipal.name}"/>
+                        <h:commandLink class="loggingButton" id="logout" action="#{loginMgmtBean.logout}" value="Logout" update="@form" />
                     </sec:authorize>
                 </h:form>
 

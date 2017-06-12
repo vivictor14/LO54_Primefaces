@@ -1,15 +1,14 @@
 package fr.utbm.lo54.primeProject.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
 @Table(name="course")
 public class Course implements Serializable {
     private String code;
+    private Collection<CourseSession> courseSessions;
 
     @Id
     @Column(name = "code")
@@ -31,6 +30,15 @@ public class Course implements Serializable {
         if (code != null ? !code.equals(course.code) : course.code != null) return false;
 
         return true;
+    }
+
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+    public Collection<CourseSession> getCourseSessions() {
+        return courseSessions;
+    }
+
+    public void setCourseSessions(Collection<CourseSession> courseSessions) {
+        this.courseSessions = courseSessions;
     }
 
     @Override
