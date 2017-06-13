@@ -48,6 +48,10 @@ public class ClientBean {
         clientService.persist(client);
     }
 
+    public boolean isAlreadyEnrolled(int sessionId) {
+        return client.getCourseSessions().stream().anyMatch(courseSession -> courseSession.getId().equals(sessionId));
+    }
+
     public Client getClient() {
         return client;
     }

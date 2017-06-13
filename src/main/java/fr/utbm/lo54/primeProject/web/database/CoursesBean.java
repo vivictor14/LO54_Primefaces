@@ -21,6 +21,9 @@ public class CoursesBean {
 
     private final CourseSessionService courseSessionService;
 
+    private int sessionId;
+    private String sessionIdString;
+
     public CoursesBean(CourseService courseService, CourseSessionService courseSessionService) {
         this.courseService = courseService;
         this.courseSessionService = courseSessionService;
@@ -37,7 +40,16 @@ public class CoursesBean {
         return courses;
     }
 
-    public CourseSession getSession(int sessionId) {
-        return courseSessionService.getCourseSessionById(sessionId);
+    public CourseSession getSession() {
+        return courseSessionService.getCourseSessionById(this.sessionId);
+    }
+
+    public int getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionIdString(String sessionIdString) {
+        this.sessionIdString = sessionIdString;
+        sessionId = Integer.parseInt(sessionIdString);
     }
 }

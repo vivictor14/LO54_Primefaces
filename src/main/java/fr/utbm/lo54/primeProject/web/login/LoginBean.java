@@ -51,10 +51,10 @@ public class LoginBean {
         return null;
     }
      
-    public String logout(){
+    public String logout(String page){
         SecurityContextHolder.clearContext();
         clientBean.clear();
-        return "index?faces-redirect=true";
+        return page + "?faces-redirect=true";
     }
  
     public AuthenticationManager getAuthenticationManager() {

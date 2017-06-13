@@ -111,12 +111,12 @@
                             <p:inputText class="loggingInput" id="username" value="#{loginManagementBean.userName}" />
                             <h:outputText value="#{msg['loginForm.password']}" style="margin-right:1em"/>
                             <p:password class="loggingInput" id="password" value="#{loginManagementBean.password}" />
-                            <p:commandButton class="loggingButton" id="login" action="#{loginManagementBean.login}" value="#{msg['loginForm.login']}" update="@form" />
+                            <p:commandButton class="loggingButton" id="login" action="#{loginManagementBean.login}" value="#{msg['loginForm.login']}" update="@all" />
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
                             <h:outputText value="#{msg['loginForm.connectedAs']}" style="margin-right:1em"/>
                             <h:outputText value="#{request.userPrincipal.name}" style="font-weight:bold"/>
-                            <p:commandButton class="loggingButton" id="logout" action="#{loginManagementBean.logout}" value="#{msg['loginForm.logout']}" update="@form" />
+                            <p:commandButton class="loggingButton" id="logout" action="#{loginManagementBean.logout(request.requestURI)}" value="#{msg['loginForm.logout']}" update="@all" />
                         </sec:authorize>
                     </h:form>
                     <h:form id="languageSelection">
@@ -135,6 +135,7 @@
 
                     <div class="ContentSideSections">
                         <div class="Content100 overHidden TextShadow">
+                            <ui:insert name="pageVariables"/>
                             <span class="fontSize30 TextShadow orange regularFont marginBottom20 dispBlock"><ui:insert name="title" /></span>
                             <span class="defaultText dispTable"><ui:insert name="description" />
                             </span>

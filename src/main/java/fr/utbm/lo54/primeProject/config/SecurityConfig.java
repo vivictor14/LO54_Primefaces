@@ -76,7 +76,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         try {
             http.csrf().disable();
             http
-//                .userDetailsService(userDetailsService())
                 .authorizeRequests()
                 .antMatchers("/javax.faces.resource/**").permitAll()
                 .antMatchers("/error/**").permitAll()
@@ -84,10 +83,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/index.xhtml").permitAll()
-                .anyRequest().authenticated()
-
-            .and()
-                .exceptionHandling().accessDeniedPage("/403");
+                .antMatchers("/ui/formation.xhtml").permitAll()
+                .anyRequest().authenticated();
 
         } catch (Exception ex) {
             throw new RuntimeException(ex);
