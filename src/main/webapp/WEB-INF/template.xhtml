@@ -8,206 +8,201 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" xmlns:sec="http://www.springframework.org/security/tags">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      lang="#{localeManagementBean.language}">
 
-<h:head>
-    <f:facet name="first">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/favicon.png" />
-    </f:facet>
+<!--<f:loadBundle basename="org.primefaces.Messages" var="msg"/>-->
+<f:view locale="#{localeManagementBean.locale}">
 
-    <title>PrimeFaces ShowCase</title>
-    <h:outputStylesheet name="main/css/main.css" />
-    <h:outputStylesheet name="main/css/showcase.css" />
-    <h:outputStylesheet name="main/css/perfect-scrollbar.css" />
-    <h:outputStylesheet name="main/css/sh.css" />
-    <h:outputScript name="jquery/jquery.js" library="primefaces" />
-    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
-    <h:outputScript name="main/js/perfect-scrollbar.js" />
-    <h:outputScript name="main/js/showcase.js" />
-    <ui:insert name="head" />
-    <script type="text/javascript">
-		var _gaq = _gaq || [];
-  		_gaq.push(['_setAccount', 'UA-12200033-1']);
-  		_gaq.push(['_trackPageview']);
-    
-  		(function() {
-   			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  		})();
-	</script>
-</h:head>
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/favicon.png" />
+        </f:facet>
 
-<h:body>
+        <title>PrimeFaces ShowCase</title>
+        <h:outputStylesheet name="main/css/main.css" />
+        <h:outputStylesheet name="main/css/showcase.css" />
+        <h:outputStylesheet name="main/css/perfect-scrollbar.css" />
+        <h:outputStylesheet name="main/css/sh.css" />
+        <h:outputScript name="jquery/jquery.js" library="primefaces" />
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+        <h:outputScript name="main/js/perfect-scrollbar.js" />
+        <h:outputScript name="main/js/showcase.js" />
+        <ui:insert name="head" />
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-12200033-1']);
+            _gaq.push(['_trackPageview']);
 
-    <!-- PC CONTENT STARTS HERE-->
-    <div class="PC">
-        
-	<div id="MENUSIDE">
-    	<div id="MENUSIDEindent">
-            <span id="LOGO" class="bordersOfMenuSide">
-                <h:graphicImage name="main/images/logo.svg" />
-                <h:graphicImage id="BlueLogo" styleClass="hiddenLogo" name="main/images/logoBlue.svg" />
-            </span>
-            <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="boldFont fontSize14 mustClose searchInput"/></div>
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </h:head>
 
-            <c:forEach var="course" items="#{coursesManagementBean.courses}">
-                <span id="SubMenu-#{course.code}" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">#{course.code}</span></span>
-                <div class="SubMenuLinkContainer">
-                    <c:forEach var="session" items="#{course.courseSessions}">
-                        <a class="SubMenuLink" style="width:70%;" href="#{request.contextPath}/ui/formation.xhtml?sessionId=#{session.id}">
-                            <span style="white-space: nowrap;">
-                                &bull; #{session.location.city}
-                                <br/>
-                                <h:outputText value="#{session.startDate}" >
-                                    <f:convertDateTime pattern="dd.MM.yyyy" />
-                                </h:outputText>
-                                  -
-                                <h:outputText value="#{session.endDate}" >
-                                    <f:convertDateTime pattern="dd.MM.yyyy" />
-                                </h:outputText>
-                            </span>
-                        </a>
-                    </c:forEach>
-                </div>
-            </c:forEach>
+    <h:body>
 
-        </div>
-    </div>
-        
-    <script type="text/javascript">
-        restoreMenuState();
-    </script>
-    
-    <div id="CONTENTSIDE">
-    	<div id="CONTENTSIDEindent">
-            
-        	<!-- header bar start-->
-			<div class="ContentSideSections" id="PFTopLinksCover" style="height:60px;">
-                <a id="LOGOTEXTSIDE" href="#{request.contextPath}/index.xhtml">
-                    <span class="dispBlock logoDarkText fontSize30">PrimeFaces</span>
-                    <span class="dispBlock logoBlueText fontSize28 regularFont">SHOWCASE</span>
-                </a>
+        <!-- PC CONTENT STARTS HERE-->
+        <div class="PC">
 
-                <h:form id="loginForm">
-                    <sec:authorize access="!isAuthenticated()">
-                        <h:outputText value="Identifiant : " />
-                        <p:inputText class="loggingInput" id="username" value="#{loginManagementBean.userName}" />
-                        <h:outputText value=" Mot de passe : " />
-                        <p:password class="loggingInput" id="password" value="#{loginManagementBean.password}" />
-                        <p:commandButton class="loggingButton" id="login" action="#{loginManagementBean.login}" value="Connection" update="@form" />
-                    </sec:authorize>
-                    <sec:authorize access="isAuthenticated()">
-                        <h:outputText value="Connecté en tant que : "/>
-                        <h:outputText value="#{request.userPrincipal.name}" style="font-weight:bold"/>
-                        <h:commandLink class="loggingButton" id="logout" action="#{loginManagementBean.logout}" value="Déconnection" update="@form" />
-                    </sec:authorize>
-                </h:form>
-
-                <!--<h:form>-->
-                    <!--<h:panelGrid columns="2" cellpadding="5">-->
-                        <!--<h:outputText value="Basic: " />-->
-                        <!--<p:password id="nonFeedback" value="#{loginMgmtBean.password}" />-->
-                    <!--</h:panelGrid>-->
-
-                    <!--<p:spacer height="10" />-->
-
-                    <!--<p:separator />-->
-
-                    <!--<p:messages id="messages" showDetail="true" autoUpdate="true" />-->
-
-                    <!--<h:outputLabel value="#{loginMgmtBean.password}" id="matchGrid" />-->
-
-                    <!--<p:commandButton update="matchGrid" value="Save" />-->
-                <!--</h:form>-->
-                
-                <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
-                <a href="http://www.primefaces.org/showcase-ext" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
-                <span class="PFTopLinks floatRight boldFont cursorPointer" id="pushNav">
-                    <h:graphicImage name="main/images/pfPush.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Push</span>
-                    <div id="PushDemos" class="navOverlay">
-                        <a href="#{request.contextPath}/push/counter.xhtml"><span class="ui-text">Counter</span></a>
-                        <a href="#{request.contextPath}/push/chat.xhtml"><span class="ui-text">Chat</span></a>
-                    </div>
+        <div id="MENUSIDE">
+            <div id="MENUSIDEindent">
+                <span id="LOGO" class="bordersOfMenuSide">
+                    <h:graphicImage name="main/images/logo.svg" />
+                    <h:graphicImage id="BlueLogo" styleClass="hiddenLogo" name="main/images/logoBlue.svg" />
                 </span>
-                <a href="#{request.contextPath}/mobile/index.xhtml" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
-                <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
-                    <h:form>
-                        <h:graphicImage name="main/images/themeswitcher.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Themes</span>
-                        <div id="GlobalThemeSwitcher" class="navOverlay">
-                            <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
-                                <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-text">#{theme.displayName}</span></a>
-                            </ui:repeat>
-                        </div>
-                        <p:remoteCommand name="changeTheme" actionListener="#{guestPreferences.changeTheme}" />
+                <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="boldFont fontSize14 mustClose searchInput"/></div>
+
+                <c:forEach var="course" items="#{coursesManagementBean.courses}">
+                    <span id="SubMenu-#{course.code}" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">#{course.code}</span></span>
+                    <div class="SubMenuLinkContainer">
+                        <c:forEach var="session" items="#{course.courseSessions}">
+                            <a class="SubMenuLink" style="width:70%;" href="#{request.contextPath}/ui/formation.xhtml?sessionId=#{session.id}">
+                                <span style="white-space: nowrap;">
+                                    &bull; #{session.location.city}
+                                    <br/>
+                                    <h:outputText value="#{session.startDate}" >
+                                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                                    </h:outputText>
+                                      -
+                                    <h:outputText value="#{session.endDate}" >
+                                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                                    </h:outputText>
+                                </span>
+                            </a>
+                        </c:forEach>
+                    </div>
+                </c:forEach>
+
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            restoreMenuState();
+        </script>
+
+        <div id="CONTENTSIDE">
+            <div id="CONTENTSIDEindent">
+
+                <!-- header bar start-->
+                <div class="ContentSideSections" id="PFTopLinksCover" style="height:60px;">
+                    <a id="LOGOTEXTSIDE" href="#{request.contextPath}/index.xhtml">
+                        <span class="dispBlock logoDarkText fontSize30">PrimeFaces</span>
+                        <span class="dispBlock logoBlueText fontSize28 regularFont">SHOWCASE</span>
+                    </a>
+
+                    <h:form id="loginForm">
+                        <sec:authorize access="!isAuthenticated()">
+                            <h:outputText value="#{msg['loginForm.username']}" style="margin-right:1em"/>
+                            <p:inputText class="loggingInput" id="username" value="#{loginManagementBean.userName}" />
+                            <h:outputText value="#{msg['loginForm.password']}" style="margin-right:1em"/>
+                            <p:password class="loggingInput" id="password" value="#{loginManagementBean.password}" />
+                            <p:commandButton class="loggingButton" id="login" action="#{loginManagementBean.login}" value="#{msg['loginForm.login']}" update="@form" />
+                        </sec:authorize>
+                        <sec:authorize access="isAuthenticated()">
+                            <h:outputText value="#{msg['loginForm.connectedAs']}" style="margin-right:1em"/>
+                            <h:outputText value="#{request.userPrincipal.name}" style="font-weight:bold"/>
+                            <p:commandButton class="loggingButton" id="logout" action="#{loginManagementBean.logout}" value="#{msg['loginForm.logout']}" update="@form" />
+                        </sec:authorize>
                     </h:form>
-                </span>
+                    <h:form id="languageSelection">
+                        <p:selectOneMenu  value="#{localeManagementBean.language}" >
+                            <f:selectItems value="#{localeManagementBean.availableLanguages}"/>
+                            <f:ajax event="valueChange" render="@all" listener="#{localeManagementBean.valueChanged}"/>
+                        </p:selectOneMenu>
+                    </h:form>
 
-            </div>
-            <!-- header bar end-->
+                    <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
+                    <a href="http://www.primefaces.org/showcase-ext" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
+                    <span class="PFTopLinks floatRight boldFont cursorPointer" id="pushNav">
+                        <h:graphicImage name="main/images/pfPush.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Push</span>
+                        <div id="PushDemos" class="navOverlay">
+                            <a href="#{request.contextPath}/push/counter.xhtml"><span class="ui-text">Counter</span></a>
+                            <a href="#{request.contextPath}/push/chat.xhtml"><span class="ui-text">Chat</span></a>
+                        </div>
+                    </span>
+                    <a href="#{request.contextPath}/mobile/index.xhtml" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
+                    <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
+                        <h:form>
+                            <h:graphicImage name="main/images/themeswitcher.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Themes</span>
+                            <div id="GlobalThemeSwitcher" class="navOverlay">
+                                <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
+                                    <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-text">#{theme.displayName}</span></a>
+                                </ui:repeat>
+                            </div>
+                            <p:remoteCommand name="changeTheme" actionListener="#{guestPreferences.changeTheme}" />
+                        </h:form>
+                    </span>
 
-            <ui:insert name="content">
-                
-                <ui:insert name="subsubmenu"></ui:insert>
-                
-                <div class="ContentSideSections">
-                    <div class="Content100 overHidden TextShadow">
-                        <span class="fontSize30 TextShadow orange regularFont marginBottom20 dispBlock"><ui:insert name="title" /></span>
-                        <span class="defaultText dispTable"><ui:insert name="description" />
-                        </span>
-                    </div>
                 </div>
+                <!-- header bar end-->
 
-                <div class="ContentSideSections Implementation">
-                    <ui:insert name="implementation" />
-                </div>
+                <ui:insert name="content">
 
-                <div id="SourceContentSide" class="ContentSideSections Source">
-                    <div class="Content100 overHidden TextShadow">
-                        <span class="defaultText">
-                            <span class="fontSize18 logoBlueText">
-                                <ui:insert name="source" />
+                    <ui:insert name="subsubmenu"></ui:insert>
+
+                    <div class="ContentSideSections">
+                        <div class="Content100 overHidden TextShadow">
+                            <span class="fontSize30 TextShadow orange regularFont marginBottom20 dispBlock"><ui:insert name="title" /></span>
+                            <span class="defaultText dispTable"><ui:insert name="description" />
                             </span>
-                        </span>
+                        </div>
                     </div>
-                </div>
-           
-            </ui:insert>
-            
-            <!-- footer start-->
-            <div class="ContentSideSections">
-                <span class="floatLeft fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2015<br />All rights reserved.</span>
-                <span class="floatRight fontSize14 gray">Running #{build.primefacesVersion} on #{build.jsfVersion}.</span>
-                <div style="clear:both" />
-            </div>
-            <!-- footer end-->
-            
-        </div>
-    </div>
-    
-    </div>
-    <!-- PC CONTENT END-->
-    
-     <ui:insert name="status">
-        <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
-            <f:facet name="start">
-                <p:graphicImage name="main/images/loader.gif" />
-            </f:facet>
 
-            <f:facet name="complete">
-                <h:outputText value="" />
-            </f:facet>
-        </p:ajaxStatus>
-    </ui:insert>
-    
-    <ui:insert name="highlight">
-        <h:outputScript name="main/js/sh.js" target="body"/>
-    </ui:insert>
-    
-    <ui:insert name="body"></ui:insert>
-</h:body>
+                    <div class="ContentSideSections Implementation">
+                        <ui:insert name="implementation" />
+                    </div>
+
+                    <div id="SourceContentSide" class="ContentSideSections Source">
+                        <div class="Content100 overHidden TextShadow">
+                            <span class="defaultText">
+                                <span class="fontSize18 logoBlueText">
+                                    <ui:insert name="source" />
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                </ui:insert>
+
+                <!-- footer start-->
+                <div class="ContentSideSections">
+                    <span class="floatLeft fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2015<br />All rights reserved.</span>
+                    <span class="floatRight fontSize14 gray">Running #{build.primefacesVersion} on #{build.jsfVersion}.</span>
+                    <div style="clear:both" />
+                </div>
+                <!-- footer end-->
+
+            </div>
+        </div>
+
+        </div>
+        <!-- PC CONTENT END-->
+
+         <ui:insert name="status">
+            <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+                <f:facet name="start">
+                    <p:graphicImage name="main/images/loader.gif" />
+                </f:facet>
+
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+        </ui:insert>
+
+        <ui:insert name="highlight">
+            <h:outputScript name="main/js/sh.js" target="body"/>
+        </ui:insert>
+
+        <ui:insert name="body"></ui:insert>
+    </h:body>
+</f:view>
 </html>
