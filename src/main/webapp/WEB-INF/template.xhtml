@@ -24,7 +24,7 @@
             <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/favicon.png" />
         </f:facet>
 
-        <title>PrimeFaces ShowCase</title>
+        <title>Home</title>
         <h:outputStylesheet name="main/css/main.css" />
         <h:outputStylesheet name="main/css/showcase.css" />
         <h:outputStylesheet name="main/css/perfect-scrollbar.css" />
@@ -58,7 +58,14 @@
                     <h:graphicImage name="main/images/logo.svg" />
                     <h:graphicImage id="BlueLogo" styleClass="hiddenLogo" name="main/images/logoBlue.svg" />
                 </span>
-                <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/><input id="menuSearch" type="text" placeholder="Search Menu" class="boldFont fontSize14 mustClose searchInput"/></div>
+                <div class="MenuSideMainLink bordersOfMenuSide">
+                    <h:panelGrid columns="2">
+                    <h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/>
+                    <!--<input id="menuSearch"   class="boldFont fontSize14 mustClose searchInput"/>-->
+                    <p:chips id="search" placeholder="Search Menu" value="#{searchBean.tags}" class="boldFont fontSize14 mustClose searchInput" />
+                    <!--<p:calendar id="button" value="#{calendarView.date3}}" showOn="search" />-->
+                    </h:panelGrid>
+                </div>
 
                 <c:forEach var="course" items="#{coursesManagementBean.courses}">
                     <span id="SubMenu-#{course.code}" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/misc.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/miscBlue.svg" /><span class="MainLinkText">#{course.code}</span></span>
@@ -94,8 +101,8 @@
                 <!-- header bar start-->
                 <div class="ContentSideSections" id="PFTopLinksCover" style="height:60px;">
                     <a id="LOGOTEXTSIDE" href="#{request.contextPath}/index.xhtml">
-                        <span class="dispBlock logoDarkText fontSize30">PrimeFaces</span>
-                        <span class="dispBlock logoBlueText fontSize28 regularFont">SHOWCASE</span>
+                        <span class="dispBlock logoDarkText fontSize30">LO54</span>
+                        <span class="dispBlock logoBlueText fontSize28 regularFont">PROJECT</span>
                     </a>
 
                     <h:form id="loginForm">
@@ -118,28 +125,6 @@
                             <f:ajax event="valueChange" render="@all" listener="#{localeManagementBean.valueChanged}"/>
                         </p:selectOneMenu>
                     </h:form>
-
-                    <a href="#{request.contextPath}/ui/misc/mockosx.xhtml" class="PFTopLinks floatRight boldFont marginRight20"><h:graphicImage name="main/images/pfMockosx.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">MockOSX</span></a>
-                    <a href="http://www.primefaces.org/showcase-ext" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfExtensions.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Extensions</span></a>
-                    <span class="PFTopLinks floatRight boldFont cursorPointer" id="pushNav">
-                        <h:graphicImage name="main/images/pfPush.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Push</span>
-                        <div id="PushDemos" class="navOverlay">
-                            <a href="#{request.contextPath}/push/counter.xhtml"><span class="ui-text">Counter</span></a>
-                            <a href="#{request.contextPath}/push/chat.xhtml"><span class="ui-text">Chat</span></a>
-                        </div>
-                    </span>
-                    <a href="#{request.contextPath}/mobile/index.xhtml" class="PFTopLinks floatRight boldFont"><h:graphicImage name="main/images/pfMobile.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Mobile</span></a>
-                    <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
-                        <h:form>
-                            <h:graphicImage name="main/images/themeswitcher.svg" /><span class="PFGrayText">PF</span><span class="PFDarkText">Themes</span>
-                            <div id="GlobalThemeSwitcher" class="navOverlay">
-                                <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
-                                    <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-text">#{theme.displayName}</span></a>
-                                </ui:repeat>
-                            </div>
-                            <p:remoteCommand name="changeTheme" actionListener="#{guestPreferences.changeTheme}" />
-                        </h:form>
-                    </span>
 
                 </div>
                 <!-- header bar end-->
@@ -175,7 +160,7 @@
                 <!-- footer start-->
                 <div class="ContentSideSections">
                     <span class="floatLeft fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2015<br />All rights reserved.</span>
-                    <span class="floatRight fontSize14 gray">Running #{build.primefacesVersion} on #{build.jsfVersion}.</span>
+                    <span class="floatRight fontSize14 gray">Running Version 0.3.2</span>
                     <div style="clear:both" />
                 </div>
                 <!-- footer end-->
