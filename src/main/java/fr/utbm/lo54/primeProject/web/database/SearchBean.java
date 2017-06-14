@@ -4,30 +4,45 @@ import fr.utbm.lo54.primeProject.service.LocationService;
 import org.primefaces.event.SelectEvent;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Component("searchBean")
 @ManagedBean(name="searchBean")
-@RequestScoped
+@ViewScoped
 public class SearchBean {
 
     private List<String> chips = new ArrayList<>();
 
     private final LocationService locationService;
 
+    private ResourceBundle bundle;
+
     private String location;
 
     private Date date = today();
 
+    private String placeHolder;
+
     public SearchBean(LocationService locationService) {
         this.locationService = locationService;
+    }
+
+    @PostConstruct
+    public void init() {
+        bundle = getMessageBundle();
+    }
+
+    private ResourceBundle getMessageBundle() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        return facesContext.getApplication().getResourceBundle(facesContext, "msg");
     }
 
     public List<String> getChips() {
@@ -88,5 +103,19 @@ public class SearchBean {
         today.set(Calendar.MINUTE, 0);
         today.set(Calendar.SECOND, 0);
         return today.getTime();
+    }
+
+    public String getPlaceHolder() {
+        bundle = getMessageBundle();
+        if(chips.size() > 0) {
+            return "";
+        }
+        else {
+            return bundle.getString("search.placeHolder");
+        }
+    }
+
+    public void setPlaceHolder(String placeHolder) {
+        this.placeHolder = placeHolder;
     }
 }

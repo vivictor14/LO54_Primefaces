@@ -81,7 +81,7 @@
                                         <p:inputText id="email" value="#{clientManagementBean.email}" required="true" label="Email"/>
                                         <p:message for="email" />
                                     </h:panelGrid>
-                                    <p:commandButton id="saveBtn" value="#{msg['formation.form.submit']}" icon="ui-icon-check" style="margin:0" action="#{clientManagementBean.enroll}" update="growl">
+                                    <p:commandButton id="saveBtn" value="#{msg['formation.form.submit']}" icon="ui-icon-check" style="margin:0" action="#{clientManagementBean.enroll}" update="@all">
                                         <f:param name="sessionId" value="#{coursesManagementBean.sessionId}" />
                                     </p:commandButton>
                                 </p:panel>
