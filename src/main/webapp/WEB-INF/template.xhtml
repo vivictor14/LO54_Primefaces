@@ -58,12 +58,29 @@
                     <h:graphicImage name="main/images/logo.svg" />
                     <h:graphicImage id="BlueLogo" styleClass="hiddenLogo" name="main/images/logoBlue.svg" />
                 </span>
-                <div class="MenuSideMainLink bordersOfMenuSide">
+                <div class="MenuSideMainLink bordersOfMenuSide searchMenu">
                     <h:panelGrid columns="2">
-                    <h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/>
-                    <!--<input id="menuSearch"   class="boldFont fontSize14 mustClose searchInput"/>-->
-                    <p:chips id="search" placeholder="Search Menu" value="#{searchBean.tags}" class="boldFont fontSize14 mustClose searchInput" />
-                    <!--<p:calendar id="button" value="#{calendarView.date3}}" showOn="search" />-->
+                        <h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/>
+                        <h:form id="searchForm">
+                            <p:chips id="searchChips" value="#{searchBean.chips}" onkeyup="if(!(event.keyCode !== 8 || $(this)[0].value.length !== 0)) { hiddenSubmitButton(); search(); } ">
+                                <f:ajax event="itemSelect" onevent="search()"/>
+                                <f:ajax event="itemUnselect" onevent="search()"/>
+                                <f:ajax event="valueChange" onevent="search()"/>
+                            </p:chips>
+                            <p:remoteCommand name="hiddenSubmitButton" update="searchForm"/>
+                            <h:panelGrid class="dateAndLocationPanel" columns="2">
+                                <p:selectOneMenu id="location" value="#{searchBean.location}">
+                                    <f:selectItem itemLabel="Add location" itemValue=""/>
+                                    <f:selectItems value="#{searchBean.getAvailableLocations()}"/>
+                                    <f:ajax event="valueChange" listener="#{searchBean.addingLocationListener}" render="@form"/>
+                                </p:selectOneMenu>
+                                <p:calendar id="date" value="#{searchBean.date}" showOn="button">
+                                    <p:ajax event="dateSelect" listener="#{searchBean.addingDateListener}" update="@form"/>
+                                </p:calendar>
+                            </h:panelGrid>
+                        </h:form>
+
+
                     </h:panelGrid>
                 </div>
 
@@ -76,11 +93,11 @@
                                     &bull; #{session.location.city}
                                     <br/>
                                     <h:outputText value="#{session.startDate}" >
-                                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
                                     </h:outputText>
                                       -
                                     <h:outputText value="#{session.endDate}" >
-                                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
                                     </h:outputText>
                                 </span>
                             </a>

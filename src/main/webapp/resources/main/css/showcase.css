@@ -37,9 +37,14 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 		#MENUSIDEindent{width:100%; height:auto;}
 			#LOGO{height:87px; display:block; padding:27px 0 5px 10px; z-index:997; background-color:#313b3f;margin-left:100px}
 				#LOGO img{width:62px; height:auto; }
-			.MenuSideMainLink{width:100%; height:45px; display:block; padding:15px 0px 0px 27px; cursor:pointer;}
-				.MenuSideMainLink input{ padding:6px; background-color:#354044; outline:none; border:0px; border:none; color:#9ba5ac; border-radius:20px;
+			.MenuSideMainLink{width:100%; height: 45px; display:block; padding:15px 0px 0px 27px; cursor:pointer;}
+                .searchMenu { height: auto; }
+                .MenuSideMainLink table { margin-left: -15px; margin-top: -10px; }
+				.MenuSideMainLink .ui-chips-container{ width: 200px; padding: 3px 3px 3px 20px; background-color:#354044; outline:none; border:0px; border:none; border-radius:20px;
 				-webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5); -moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5); box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5);}
+                .MenuSideMainLink .ui-chips .ui-chips-input-token { width: 40%; }
+                .MenuSideMainLink input { color: #9ba5ac}
+                .MenuSideMainLink .ui-chips-token-label { padding: 0 1.3em 0 .3em !important; }
 			.MenuSideMainLinkDark{background-color:#20282b !important; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 			.MenuSideMainLink:hover{background-color:#20282b; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -ms-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 				.MenuSideMainLink img{width:30px; height:auto; float:left;}

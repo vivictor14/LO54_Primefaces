@@ -2,8 +2,10 @@ package fr.utbm.lo54.primeProject.web.database;
 
 import fr.utbm.lo54.primeProject.entity.Course;
 import fr.utbm.lo54.primeProject.entity.CourseSession;
+import fr.utbm.lo54.primeProject.entity.Location;
 import fr.utbm.lo54.primeProject.service.CourseService;
 import fr.utbm.lo54.primeProject.service.CourseSessionService;
+import fr.utbm.lo54.primeProject.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

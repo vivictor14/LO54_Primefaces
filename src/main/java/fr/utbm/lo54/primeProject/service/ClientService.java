@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class ClientService {
 
     @Autowired
-    ClientRepository clientRepository;
+    private ClientRepository clientRepository;
 
     public void persist(Client client) {
         clientRepository.saveAndFlush(client);

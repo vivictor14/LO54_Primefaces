@@ -177,52 +177,63 @@ $(document).ready(function() {
         });
 
     }
-    
-     // Search ---------------------------------------
-    Showcase.searchInput.on('keyup', function(e) {
-        Showcase.hideSubMenus();
-        
-        if (e.keyCode === 32) {
-            $(this).val($(this).val()+" ");
-        }
-        var searchValue = $(this).val().toLowerCase(),
-        matchSub = false;
-
-        $('.SubMenuLinkContainer').each(function() {
-            var MenuSideValue = $.trim($(this).prev().children('span').text()).toLowerCase(),
-            itemValue;
-            
-            if(MenuSideValue.search(searchValue) < 0 || searchValue.length === 0) {  
-                var Sub = $(this).children('a');
-
-                for(var i = 0; i < Sub.length; i++) {     //for SubMenu
-                    itemValue = $.trim(Sub.eq(i).text()).toLowerCase();
-                    if(itemValue.search(searchValue) >= 0) {
-                        Sub.eq(i).show();
-                        matchSub = true;
-                    }
-                    else{
-                        Sub.eq(i).hide();
-                    }
-                }
-                
-                if(matchSub) {
-                    $(this).prev().show();
-                    matchSub = false;
-                }
-                else {
-                    $(this).prev().hide();
-                }
-            }
-            else {
-                $(this).children().show();
-                $(this).prev().show();
-            }
-        });
-   });
    
    window.Showcase = Showcase;
 });
+
+// Search ---------------------------------------
+function search() {
+    Showcase.hideSubMenus();
+
+    var chips = $('#searchForm')[0].children[1].children[1].children;
+
+    var tags = [];
+    for(var i = 0; i < chips.length; i++) {
+        tags.push(chips[i].value.toLowerCase());
+    }
+
+    var matchSub = false;
+
+    $('.SubMenuLinkContainer').each(function() {
+        var MenuSideValue = $.trim($(this).prev().children('span').text()).toLowerCase(),
+            itemValue;
+
+        if(!containsAll(MenuSideValue, tags) || tags.length === 0) {
+            var Sub = $(this).children('a');
+
+            for(var i = 0; i < Sub.length; i++) {     //for SubMenu
+                itemValue = $.trim(Sub.eq(i).text()).toLowerCase();
+                if(containsAll(MenuSideValue + itemValue, tags)) {
+                    Sub.eq(i).show();
+                    matchSub = true;
+                }
+                else{
+                    Sub.eq(i).hide();
+                }
+            }
+
+            if(matchSub) {
+                $(this).prev().show();
+                matchSub = false;
+            }
+            else {
+                $(this).prev().hide();
+            }
+        }
+        else {
+            $(this).children().show();
+            $(this).prev().show();
+        }
+    });
+}
+
+function containsAll(string, tags) {
+    var bool = true;
+    tags.forEach(function(tag) {
+        if(string.search(tag) < 0) bool = false;
+    });
+    return bool;
+}
 
 function restoreMenuState() {
     var activeMenuId = $.cookie('menustate');

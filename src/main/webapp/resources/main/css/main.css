@@ -24,3 +24,43 @@
 .loggingInput {
     margin-right: 1em !important;
 }
+
+#searchForm .ui-selectonemenu-label {
+    background-color: #354044;
+    color: #9ba5ac;
+    text-shadow: none;
+    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5); -moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5); box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5);
+}
+
+.ui-state-default {
+    background-image: none;
+    border: 0 solid #cccccc !important;
+}
+
+#searchForm .ui-selectonemenu {
+    background-color: transparent;
+}
+
+#searchForm .ui-selectonemenu-trigger {
+    background-color: #9ba5ac;
+}
+
+#searchForm .ui-calendar .ui-inputfield {
+    display: none;
+}
+
+#searchForm .ui-calendar .ui-button-text {
+    background-color: #9ba5ac;
+    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5); -moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5); box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5);
+}
+
+#searchForm .ui-calendar .ui-button {
+    margin-left: 3.1em;
+}
+
+#searchForm .ui-calendar .ui-icon {}
+
+#searchForm .dateAndLocationPanel {
+    margin-top: 0;
+    margin-left: 0;
+}
