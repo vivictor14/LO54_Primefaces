@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created by Scorp on 13/06/2017.
- */
 @Controller
 public class CustomErrorController extends AbstractErrorController {
     private static final String ERROR_PATH=  "/error";
@@ -28,7 +25,7 @@ public class CustomErrorController extends AbstractErrorController {
 
     /**
      * Just catching the {@linkplain NotFoundException} exceptions and render
-     * the 404.jsp error page.
+     * the 404.xhtml error page.
      */
     @ExceptionHandler(NotFoundException.class)
     public String notFound() {

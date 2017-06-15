@@ -13,7 +13,6 @@
     <ui:define name="implementation">
         <c:choose>
             <c:when test="#{param['edit'] != null}">
-                <sec:authorize access="isAuthenticated()">
                     <h:form>
                         <p:growl id="growl1" />
                         <p:panel id="pnl1" header="#{msg['profile.form.title']}" style="margin-bottom:10px;">
@@ -45,10 +44,8 @@
                         </p:panel>
 
                     </h:form>
-                </sec:authorize>
             </c:when>
             <c:otherwise>
-                <sec:authorize access="isAuthenticated()">
                     <h:form>
                         <p:panel id="pnl" header="#{msg['profile.form.title']}" style="margin-bottom:10px;">
                             <p:messages id="messages" />
@@ -79,9 +76,23 @@
                         </p:panel>
 
                     </h:form>
-                </sec:authorize>
             </c:otherwise>
         </c:choose>
+        <p:panel id="pnl2" header="#{msg['profile.courses']}" style="margin-bottom:10px;">
+            <h:panelGrid columns="6" cellpadding="5">
+                <c:forEach var="courseSession" items="#{clientManagementBean.client.courseSessions}">
+                    <h:outputText value="#{courseSession.course.code}" style="font-weight: bold" />
+                    <h:outputText value="#{courseSession.location.city}" />
+                    <h:outputText value="#{courseSession.startDate}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                     -
+                    <h:outputText value="#{courseSession.endDate}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </c:forEach>
+            </h:panelGrid>
+        </p:panel>
     </ui:define>
 
 </ui:composition>

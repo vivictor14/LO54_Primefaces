@@ -1,3 +1,33 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+.PC {
+    height: 100%;
+}
+
+#CONTENTSIDE {
+    height: 100%;
+    overflow-y: auto !important;
+}
+
+.page-wrap {
+    min-height: 100%;
+    margin: 0 auto -95px; /* the bottom margin is the negative value of the footer's height */
+}
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+.page-wrap:after {
+    height: 93px;
+}
+
+.footer {
+    border-top: solid 1px #bcc7cf !important;
+}
+
 #loginForm {
     float: right;
     margin-top: -25px;
