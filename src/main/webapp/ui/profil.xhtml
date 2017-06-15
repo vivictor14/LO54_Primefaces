@@ -11,46 +11,60 @@
     </ui:define>
 
     <ui:define name="implementation">
-        <sec:authorize access="isAuthenticated()">
-            <h:form>
-                <p:panel id="pnl" header="#{msg['profile.form.title']}" style="margin-bottom:10px;">
-                    <p:messages id="messages" />
-                    <h:panelGrid columns="6" cellpadding="5">
-                        <h:outputLabel for="lastname" value="#{msg['formation.form.lastName']}:" />
-                        <p:inplace id="lastname" label="#{clientManagementBean.getLastName()}" effectSpeed="fast" event="dblclick">
-                            <p:inputText value="#{clientManagementBean.lastName}" required="true" />
-                        </p:inplace>
-                        <p:message for="lastname" />
+        <h:form>
+            <p:panel id="pnl" header="#{msg['profile.form.title']}" style="margin-bottom:10px;">
+                <p:messages id="messages" />
+                <h:panelGrid columns="6" cellpadding="5">
+                    <h:outputLabel for="lastname" value="#{msg['formation.form.lastName']}:" />
+                    <p:inplace id="lastname" label="#{clientManagementBean.getLastName()}" effectSpeed="fast" event="dblclick">
+                        <p:inputText value="#{clientManagementBean.lastName}" required="true" />
+                    </p:inplace>
+                    <p:message for="lastname" />
 
-                        <h:outputLabel for="firstname" value="#{msg['formation.form.firstName']}:" />
-                        <p:inplace id="firstname" label="#{clientManagementBean.getFirstName()}" effectSpeed="fast" event="dblclick">
-                            <p:inputText value="#{clientManagementBean.firstName}" required="true" />
-                        </p:inplace>
-                        <p:message for="firstname" />
+                    <h:outputLabel for="firstname" value="#{msg['formation.form.firstName']}:" />
+                    <p:inplace id="firstname" label="#{clientManagementBean.getFirstName()}" effectSpeed="fast" event="dblclick">
+                        <p:inputText value="#{clientManagementBean.firstName}" required="true" />
+                    </p:inplace>
+                    <p:message for="firstname" />
 
-                        <h:outputLabel for="address" value="#{msg['formation.form.address']}:" />
-                        <p:inplace id="address" label="#{clientManagementBean.getAddress()}" effectSpeed="fast" event="dblclick">
-                            <p:inputTextarea rows="3" cols="22" value="#{clientManagementBean.address}" required="true" />
-                        </p:inplace>
-                        <p:message for="address" />
+                    <h:outputLabel for="address" value="#{msg['formation.form.address']}:" />
+                    <p:inplace id="address" label="#{clientManagementBean.getAddress()}" effectSpeed="fast" event="dblclick">
+                        <p:inputTextarea rows="3" cols="22" value="#{clientManagementBean.address}" required="true" />
+                    </p:inplace>
+                    <p:message for="address" />
 
-                        <h:outputLabel for="phone" value="#{msg['formation.form.phone']}:" />
-                        <p:inplace id="phone" label="#{clientManagementBean.getPhone()}" effectSpeed="fast" event="dblclick">
-                            <p:inputMask value="#{clientManagementBean.phone}" mask="99-99-99-99-99"/>
-                        </p:inplace>
-                        <p:message for="phone" />
+                    <h:outputLabel for="phone" value="#{msg['formation.form.phone']}:" />
+                    <p:inplace id="phone" label="#{clientManagementBean.getPhone()}" effectSpeed="fast" event="dblclick">
+                        <p:inputMask value="#{clientManagementBean.phone}" mask="99-99-99-99-99"/>
+                    </p:inplace>
+                    <p:message for="phone" />
 
-                        <h:outputLabel for="email" value="#{msg['formation.form.email']}:" />
-                        <p:inplace id="email" label="#{clientManagementBean.getEmail()}" effectSpeed="fast" event="dblclick">
-                            <p:inputText value="#{clientManagementBean.email}" required="true"/>
-                        </p:inplace>
-                        <p:message for="email" />
-                    </h:panelGrid>
-                    <p:button id="editBtn" value="#{msg['profile.edit']}"  style="margin:0" action="#{clientManagementBean.edit}"/>
-                </p:panel>
+                    <h:outputLabel for="email" value="#{msg['formation.form.email']}:" />
+                    <p:inplace id="email" label="#{clientManagementBean.getEmail()}" effectSpeed="fast" event="dblclick">
+                        <p:inputText value="#{clientManagementBean.email}" required="true"/>
+                    </p:inplace>
+                    <p:message for="email" />
+                </h:panelGrid>
+                <p:button id="editBtn" value="#{msg['profile.edit']}"  style="margin:0" action="#{clientManagementBean.edit}"/>
+            </p:panel>
 
-            </h:form>
-        </sec:authorize>
+        </h:form>
+
+        <p:panel id="pnl2" header="#{msg['profile.courses']}" style="margin-bottom:10px;">
+            <h:panelGrid columns="5" cellpadding="5">
+                <c:forEach var="courseSession" items="#{clientManagementBean.client.courseSessions}">
+                    <h:outputText value="#{courseSession.course.code}" style="font-weight: bold" />
+                    <h:outputText value="#{courseSession.location.city}" />
+                    <h:outputText value="#{courseSession.startDate}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                    -
+                    <h:outputText value="#{courseSession.endDate}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </c:forEach>
+            </h:panelGrid>
+        </p:panel>
     </ui:define>
 
 </ui:composition>
