@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import java.util.Map;
 
 @Component("clientManagementBean")
 @ManagedBean(name="clientManagementBean")
@@ -49,7 +48,7 @@ public class ClientBean {
     }
 
     public void edit(){
-
+        clientService.persist(client);
     }
 
     public boolean isAlreadyEnrolled(int sessionId) {
