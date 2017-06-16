@@ -21,7 +21,7 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
             <meta name="apple-mobile-web-app-capable" content="yes" />
-            <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/favicon.png" />
+            <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/favicon.png?v=2" />
         </f:facet>
 
         <title>LO54 Project</title>
@@ -75,7 +75,7 @@
                                     <p:selectOneMenu id="location" value="#{searchBean.location}">
                                         <f:selectItem itemLabel="#{msg['search.addLocation']}" itemValue=""/>
                                         <f:selectItems value="#{searchBean.getAvailableLocations()}"/>
-                                        <f:ajax event="valueChange" listener="#{searchBean.addingLocationListener}" render="@form" onevent="search()"/>
+                                        <p:ajax event="valueChange" listener="#{searchBean.addingLocationListener}" update="@form" oncomplete="search()"/>
                                     </p:selectOneMenu>
                                     <p:calendar id="date" value="#{searchBean.date}" showOn="button">
                                         <p:ajax event="dateSelect" listener="#{searchBean.addingDateListener}" update="@form" oncomplete="search()"/>
