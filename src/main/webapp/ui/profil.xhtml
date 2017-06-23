@@ -45,7 +45,7 @@
                     </p:inplace>
                     <p:message for="email" />
                 </h:panelGrid>
-                <p:button id="editBtn" value="#{msg['profile.edit']}"  style="margin:0" action="#{clientManagementBean.edit}"/>
+                <p:commandButton id="editBtn" value="#{msg['profile.edit']}"  style="margin:0" action="#{clientManagementBean.edit}" update="@form"/>
             </p:panel>
 
         </h:form>
